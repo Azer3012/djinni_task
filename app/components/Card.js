@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
   },
   image: {
     height: helpers.px(120),
-    
   },
   titleContainer: {
     paddingHorizontal: helpers.px(6),

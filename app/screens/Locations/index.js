@@ -6,11 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLocations } from '../../redux/features/locationsSlice';
 import LocationItem from '../../components/LocationItem';
 import colors from '../../values/colors';
+import NetWorkConnection from '../../components/NetWorkConnection';
 
 const Locations = () => {
   const dispatch=useDispatch()
   const locations=useSelector(state=>state.locations.list)
   const loading=useSelector(state=>state.locations.loading)
+  const isConnected =useSelector(state=>state.network.isConnected)
   const [refreshing, setRefreshing] = useState(false);
 
   const getLocations=async()=>{
@@ -38,7 +40,7 @@ const Locations = () => {
   const renderLocation=({item})=><LocationItem location={item}/>
   return (
     <Layout type={"general"} headerText={"Locations"}>
-      <View style={styles.container}>
+      {isConnected?<View style={styles.container}>
        {!loading?<FlatList
         data={locations}
         keyExtractor={item=>item.id}
@@ -53,7 +55,7 @@ const Locations = () => {
           />
         }
        />:<ActivityIndicator size={'large'} color={colors.main} />}
-      </View>
+      </View>:<NetWorkConnection/>}
     </Layout>
   );
 };
