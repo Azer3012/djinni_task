@@ -4,6 +4,9 @@ import {useNavigation} from '@react-navigation/native';
 import colors from './values/colors';
 import helpers from './helpers/helpers';
 import Entypo from 'react-native-vector-icons/Entypo';
+import NetInfo from '@react-native-community/netinfo';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkConnection } from './redux/features/networkSlice';
 
 
 
@@ -25,8 +28,18 @@ const Layout = ({
   isService = false,
   customHeaderTextStyle,
 }) => {
-  
+  const dispatch=useDispatch()
+  const isConnected = useSelector(state => state.network.isConnected);
  
+  useEffect(()=>{
+     // Subscribe
+     const unsubscribe = NetInfo.addEventListener(state => {
+      dispatch(checkConnection(state.isConnected));
+    });
+
+    // Unsubscribe
+    return () => unsubscribe();
+  },[isConnected])
   
   const navigation = useNavigation();
   const colorAnim = useRef(new Animated.Value(0)).current;
@@ -58,7 +71,6 @@ const Layout = ({
                     {headerText}
                 </Text> 
             </View>
-            {/* <Image style={styles.notification} source={require('./assets/images/notification.png')}/> */}
           </View>
         )}
         {!!children && children}
@@ -86,7 +98,7 @@ const styles = StyleSheet.create({
   safeAreaStyle: {
     flex: 0,
     zIndex: 30,
-    backgroundColor: colors.white,
+    backgroundColor: colors.main50,
     height: helpers.statusBarHeight,
   },
   header: {

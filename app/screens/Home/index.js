@@ -15,8 +15,8 @@ const Home = () => {
   const navigation = useNavigation();
   return (
     <Layout type={'general'} headerText="Home" hasBackButton={false}>
-      <ImageBackground
-        source={require('../../assets/images/cover.png')}
+      <View
+        // source={require('../../assets/images/cover.png')}
         style={styles.container}>
         <View style={styles.list}>
           <TouchableOpacity
@@ -30,7 +30,7 @@ const Home = () => {
             <Text style={styles.btnText}>Locations</Text>
           </TouchableOpacity>
         </View>
-      </ImageBackground>
+      </View>
     </Layout>
   );
 };
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: helpers.px(16),
+    backgroundColor:colors.main14
   },
   list: {
     flex: 1,
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: '100%',
-    height: helpers.px(30),
+    height: helpers.px(35),
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.main,
