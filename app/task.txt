@@ -1,0 +1,41 @@
+ Vinhood - React Native Technical Assessment
+
+## Problem Statement
+
+The residents of the Rick and Morty multi-verse would like an app to view a list of characters living in different dimensions. Use [this open API](https://rickandmortyapi.com/) to fetch the required data.
+
+## Requirements
+
+Build two screens, one containing a list of `characters`, and the other containing a list of `locations`.
+
+### Characters
+
+0. Create a `Screen` named `Characters`, that displays a list of [`characters`](https://rickandmortyapi.com/documentation/#character) using a `Card` layout, with 2 cards per row.
+1. Each `Card` should display the `image`, `name`, `status`, `species`, `gender`, and `origin.name` values.
+2. Users should be able to [filter the catalog](https://rickandmortyapi.com/documentation/#filter-characters) by `status`, `species`, and `gender`. You may hardcode these values to apply as a filter.
+3. Include a search field to return a list of characters by `name`.
+
+### Locations
+
+0. Create a `Screen` named `Locations`, that displays a list of [`locations`](https://rickandmortyapi.com/documentation/#location). 
+1. Each `ListItem` should display the `name`, `type`, and `dimension`, and `number_of_residents` values.
+2. When a `ListItem` is clicked, navigate to the `Characters` screen, with the `residents` of the `location` applied as a filter.
+
+## Notes
+
+0. The UI is completely up to you. Bonus points for a simple, practical user experience.
+1. Implement lazy loading to update the list as the user scrolls through the list.
+2. Implement "pull to refresh" on both lists.
+
+## Must-haves
+
+0. Redux.
+1. Unit test coverage.
+
+## Nice to Have
+
+0. Offline support.
+
+## References
+
+- https://rickandmortyapi.com/x
